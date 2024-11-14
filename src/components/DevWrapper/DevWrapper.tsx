@@ -1,5 +1,5 @@
-import styles from '@/components/DevWrapper/DevWrapper.module.css';
-import { ReactNode } from 'react';
+import styles from "@/components/DevWrapper/DevWrapper.module.css";
+import { ReactNode } from "react";
 
 export interface DevWrapperProps {
   /**
@@ -36,7 +36,7 @@ function DevWrapper({ children, enabled = true, title }: DevWrapperProps) {
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
-        {title && <div className={styles.title}>{title + ' Component'}</div>}
+        {title && <div className={styles.title}>{title + " Component"}</div>}
         {children}
       </div>
     </main>
