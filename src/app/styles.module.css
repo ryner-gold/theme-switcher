@@ -1,0 +1,251 @@
+.theme {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--text);
+  transition:
+    background-color 0.25s,
+    color 0.25s ease-in-out;
+}
+
+.theme[data-theme="Light"] {
+  --background: #fff8ea;
+  --text: #121212;
+}
+
+.theme[data-theme="Dark"] {
+  --background: #121212;
+  --text: #fff8ea;
+}
+
+.btnContainer {
+  display: flex;
+  margin: auto;
+}
+
+.themeBtn {
+  border: 2px solid;
+  padding: 30px 20px;
+  font-size: 48px;
+  cursor: pointer;
+  align-items: center;
+  transition: box-shadow 0.2s ease-in-out;
+  position: relative; /* Creates a positioning context for absolute children */
+  overflow: visible; /* Allows the particle to be visible outside button bounds */
+}
+
+.themeBtn:before,
+.themeBtn:after {
+  position: absolute;
+  content: "";
+  display: none;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: 1;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.themeBtn.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.themeBtn.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+.themeBtn:before {
+  top: -100%;
+  background-image: radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, currentColor 20%, transparent 30%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, currentColor 15%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%);
+  background-size:
+    35% 35%,
+    /* Big */ 15% 15%,
+    /* Small */ 25% 25%,
+    /* Medium */ 15% 15%,
+    /* Small */ 35% 35%,
+    /* Big */ 20% 20%,
+    /* Medium */ 30% 30%,
+    /* Big */ 15% 15%,
+    /* Small */ 25% 25%; /* Medium */
+  background-position:
+    5% 95%,
+    10% 95%,
+    10% 105%,
+    15% 100%,
+    25% 95%,
+    25% 85%,
+    40% 95%,
+    55% 95%,
+    70% 105%;
+}
+
+.themeBtn:after {
+  bottom: -100%;
+  background-image: radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, currentColor 15%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%),
+    radial-gradient(circle, currentColor 20%, transparent 20%);
+  background-size:
+    30% 30%,
+    /* Big */ 15% 15%,
+    /* Small */ 35% 35%,
+    /* Bigger */ 20% 20%,
+    /* Medium */ 15% 15%,
+    /* Small */ 30% 30%,
+    /* Big */ 25% 25%; /* Medium */
+  background-position:
+    10% 5%,
+    30% 5%,
+    55% 5%,
+    70% 5%,
+    85% 5%,
+    70% 5%,
+    70% 5%;
+}
+
+@keyframes topBubbles {
+  0% {
+    background-position:
+      5% 95%,
+      10% 95%,
+      10% 95%,
+      15% 95%,
+      25% 95%,
+      25% 95%,
+      40% 95%,
+      55% 95%,
+      70% 95%;
+  }
+  50% {
+    background-position:
+      0% 80%,
+      0% 20%,
+      10% 40%,
+      20% 0%,
+      30% 30%,
+      22% 50%,
+      50% 50%,
+      65% 20%,
+      90% 30%;
+  }
+  100% {
+    /* Some end closer, some go further */
+    background-position:
+      0% 40%,
+      0% 10%,
+      10% 50%,
+      20% -10%,
+      30% 45%,
+      22% 20%,
+      50% 40%,
+      65% 30%,
+      90% 0%;
+    background-size:
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%;
+  }
+}
+
+@keyframes bottomBubbles {
+  0% {
+    background-position:
+      10% 5%,
+      30% 5%,
+      55% 5%,
+      70% 5%,
+      85% 5%,
+      70% 5%,
+      70% 5%;
+  }
+  50% {
+    background-position:
+      0% 80%,
+      20% 80%,
+      45% 60%,
+      60% 100%,
+      75% 70%,
+      95% 60%,
+      105% 0%;
+  }
+  100% {
+    /* Some end closer, some go further */
+    background-position:
+      0% 60%,
+      20% 120%,
+      45% 70%,
+      60% 90%,
+      75% 110%,
+      95% 80%,
+      110% 100%;
+    background-size:
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%;
+  }
+}
+
+.btnContents {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: opacity 0.15s ease-out;
+  opacity: 1;
+}
+
+.btnContents.isFading {
+  opacity: 0;
+}
+
+.theme[data-theme="Light"] .themeBtn {
+  border-color: #070707;
+}
+
+.theme[data-theme="Dark"] .themeBtn {
+  border-color: azure;
+}
+
+.theme[data-theme="Light"] .themeBtn:hover {
+  box-shadow: 0 0 10px 5px black;
+}
+
+.theme[data-theme="Dark"] .themeBtn:hover {
+  box-shadow: 0 0 10px 5px white;
+}
+
+/* Thanks for looking at my theme switcher! <3 */
+.signatureContainer {
+  display: flex;
+  align-self: end;
+  padding: 30px;
+}
+
+.signatureContents {
+  font-style: italic;
+  font-size: 20px;
+}
