@@ -4,17 +4,13 @@ import { useState } from "react";
 import { Fjalla_One } from "next/font/google";
 import { MoonStars, Sun } from "@phosphor-icons/react";
 import styles from "@/app/styles.module.css";
+import { Theme } from "@/types/theme";
 
 const fjallaOne = Fjalla_One({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
-
-export enum Theme {
-  Light = "Light",
-  Dark = "Dark",
-}
 
 export default function Home() {
   const [theme, setTheme] = useState<Theme>(Theme.Light);
